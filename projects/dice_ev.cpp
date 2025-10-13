@@ -1,4 +1,4 @@
-// Use Monte Carlo simulation to find EV of a dice roll
+// Use Monte Carlo simulation to find EV of min of 2 dice rolls
 // Track different situations after?
 
 #include <iostream>
@@ -15,7 +15,9 @@ int main() {
 
     for (int i = 0; i < 10000000; ++i) {
         int randomNumber = 1 + rand() % 6; // random number between 0 and 99
-        numsvector.push_back(randomNumber);
+        int randomNumber2 = 1 + rand() % 6;
+        int randomMin = std::min(randomNumber, randomNumber2);
+        numsvector.push_back(randomMin);
     }
     int sum = std::accumulate(numsvector.begin(), numsvector.end(), 0);
     int length = numsvector.size();
